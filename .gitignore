@@ -1,0 +1,13 @@
+*
+
+!.gitignore
+!README.md
+!dualsense.sh
+
+!/AbioticFactor/
+!/AbioticFactor/Binaries/
+!/AbioticFactor/Binaries/Win64/
+!/AbioticFactor/Binaries/Win64/ue4ss/
+!/AbioticFactor/Binaries/Win64/ue4ss/Mods/
+!/AbioticFactor/Binaries/Win64/ue4ss/Mods/AbioticHaptics/
+!/AbioticFactor/Binaries/Win64/ue4ss/Mods/AbioticHaptics/**
