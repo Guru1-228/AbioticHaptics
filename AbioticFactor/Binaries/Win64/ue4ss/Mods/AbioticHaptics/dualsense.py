@@ -19,6 +19,12 @@ IN_CLOSE_WRITE = 0x00000008
 FILE_PATH = b"/dev/shm/dualsense_state"
 DUALSENSECTL = str("dualsensectl")
 
+
+# Проверить существование файла
+if not os.path.exists(FILE_PATH):
+    open(FILE_PATH, "a").close()
+
+
 # 3. Регистрируем слежку
 libc.inotify_add_watch(fd, FILE_PATH, IN_CLOSE_WRITE)
 
