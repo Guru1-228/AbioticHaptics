@@ -167,6 +167,13 @@ local function InitHooks()
 end
 
 
+--- иннициализировать, если уже в игре
+local existingPlayer = FindFirstOf("Abiotic_PlayerCharacter_C")
+if existingPlayer and existingPlayer:IsValid() then
+    InitHooks()
+end
+
+
 RegisterHook("/Script/Engine.PlayerController:ClientRestart", function(Context)
     -- Небольшая задержка, чтобы блюпринт персонажа успел инициализироваться
     ExecuteWithDelay(1000, InitHooks)
