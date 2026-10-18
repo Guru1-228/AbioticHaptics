@@ -26,9 +26,8 @@ function SendCommand(Context)
 end
 
 
-
 function SetupItemProfile(Context)
-    local Character = Context:get()
+    local Character = Context
     local Item = Character.ItemInHand_BP
     local ItemClass = "NULL"
 
@@ -82,7 +81,7 @@ local function GetRadiationLightbarCommand(radiation)
 end
 
 local function OnRadiationChanged(Context)
-    local Character = Context:get()
+    local Character = Context
     if not Character or not Character:IsValid() then return end
 
     -- Читаем радиацию (если вдруг nil, берем 0.0)
@@ -105,8 +104,19 @@ local function InitHooks()
     --- lightbar init
     SendCommand("lightbar on\nlightbar off\n")
 
+    --- Синхронизация состояния контроллера
+    local Character = FindFirstOf("Abiotic_PlayerCharacter_C")
+    if Character and Character:IsValid() then
+        print("[DualSense] Haptics synched")
+        SetupItemProfile(Character)
+        OnRadiationChanged(Character)
+    end
+
+
     --- регистрация смены предмета
-    RegisterHook("/Game/Blueprints/Characters/Abiotic_PlayerCharacter.Abiotic_PlayerCharacter_C:OnRep_ItemInHand_BP", SetupItemProfile)
+    RegisterHook("/Game/Blueprints/Characters/Abiotic_PlayerCharacter.Abiotic_PlayerCharacter_C:OnRep_ItemInHand_BP", function(Context)
+        SetupItemProfile(Context:get())
+    end)
 
     --- регистрация выстрела
     RegisterHook("/Game/Blueprints/Characters/Abiotic_PlayerCharacter.Abiotic_PlayerCharacter_C:ConsumeAmmunitionInWeapon", function(Context)
@@ -133,7 +143,9 @@ local function InitHooks()
     end)
 
     --- регистрация радиации
-    RegisterHook("/Game/Blueprints/Characters/Abiotic_PlayerCharacter.Abiotic_PlayerCharacter_C:Radiation_Changed_Event", OnRadiationChanged)
+    RegisterHook("/Game/Blueprints/Characters/Abiotic_PlayerCharacter.Abiotic_PlayerCharacter_C:Radiation_Changed_Event", function(Context)
+        OnRadiationChanged(Context:get())
+    end)
 
     --- регистрация переключения инвентаря
     RegisterHook("/Game/Blueprints/Characters/Abiotic_PlayerCharacter.Abiotic_PlayerCharacter_C:ToggleInventory", ToggleInventory)
@@ -153,7 +165,6 @@ local function InitHooks()
         SendCommand(CurrentWeaponProfile)
     end)
 end
-
 
 
 RegisterHook("/Script/Engine.PlayerController:ClientRestart", function(Context)
