@@ -102,6 +102,9 @@ local function InitHooks()
     if isInitialized then return end
     isInitialized = true
 
+    --- lightbar init
+    SendCommand("lightbar on\nlightbar off\n")
+
     --- регистрация смены предмета
     RegisterHook("/Game/Blueprints/Characters/Abiotic_PlayerCharacter.Abiotic_PlayerCharacter_C:OnRep_ItemInHand_BP", SetupItemProfile)
 
