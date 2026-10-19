@@ -4,18 +4,62 @@ local isInitialized = false
 local CurrentWeaponProfile = "trigger both off\n"
 local defaultCommand = "trigger both off\n"
 local DualSenseProfiles = {
-    ["Weapon_Gun_Pistol_C"] = "trigger right bow 1 5 2 5\ntrigger left off\n",
-    ["Weapon_Gun_wFlashlight_C"] = "trigger right bow 1 5 2 5\ntrigger left off\n",
-    ["Weapon_Gun_Crossbow_C"] = "trigger right bow 1 5 3 7\ntrigger left off\n",
-    ["Weapon_Gun_Vacuum_C"] = "trigger right vibration 5 1 30\ntrigger left off\n",
-    ["Weapon_Melee_Drill_C"] = "trigger right vibration 5 2 40\ntrigger left off\n",
-    ["Abiotic_Weapon_Melee_ParentBP_C"] = "trigger right feedback 1 1\ntrigger left off\n",
-    ["Weapon_Melee_TechSpear_C"] = "trigger right feedback 1 1\ntrigger left off\n",
-    ["Weapon_Melee_Heavy_C"] = "trigger right feedback 1 1\ntrigger left off\n",
-    ["Item_Teleporter_ParentBP_C"] = "trigger right bow 1 2 1 6\ntrigger left off\n",
-    ["Item_LightSource_Megalight_C"] = "trigger right bow 1 2 1 6\ntrigger left off\n",
-    ["FIRE"] = "trigger right vibration 0 6 45\n",
-    ["ATTACK"] = "trigger right vibration 0 2 45\n",
+    -- Пистолет охраны / Security Pistol
+    ["Weapon_Gun_Pistol_C"] = "trigger right weapon 2 5 4\ntrigger left off\n",
+
+    -- Пистолет с фонариком / Pistol with Flashlight
+    ["Weapon_Gun_wFlashlight_C"] = "trigger right weapon 2 5 4\ntrigger left off\n",
+
+    -- Трубный пистолет / Pipe Pistol
+    ["Weapon_Gun_Pistol_Pipe_Lode_C"] = "trigger right weapon 2 6 6\ntrigger left off\n",
+
+    -- Винтострел с фонариком / Scrapshot with Flashlight
+    ["Weapon_Gun_Scrapshot_wFlashlight_C"] = "trigger right weapon 2 6 7\ntrigger left off\n",
+
+    -- Снайперская винтовка / Sniper Rifle
+    ["Weapon_Gun_SniperRifle_C"] = "trigger right weapon 2 5 8\ntrigger left off\n",
+
+    -- Арбалет / Crossbow
+    ["Weapon_Gun_Crossbow_C"] = "trigger right bow 1 7 4 6\ntrigger left off\n",
+
+    -- Электромёт / Electrothrower
+    ["Weapon_Gun_Electrothrower_C"] = "trigger right vibration 3 2 50\ntrigger left off\n",
+
+    -- Пылесос для вредителей / Pest Vacuum
+    ["Weapon_Gun_Vacuum_C"] = "trigger right vibration 3 2 40\ntrigger left off\n",
+
+    -- Перфоратор / Power Drill
+    ["Weapon_Melee_Drill_C"] = "trigger right machine 4 9 2 6 35 1\ntrigger left off\n",
+
+    -- Отвёртка / Screwdriver
+    ["Weapon_Melee_Screwdriver_C"] = "trigger right machine 3 9 1 7 2 1\ntrigger left off\n",
+
+    -- Нож / Knife
+    ["Abiotic_Weapon_Melee_ParentBP_C"] = "trigger right feedback 1 2\ntrigger left off\n",
+
+    -- Молоток / Hammer
+    ["Weapon_Melee_Hammer_C"] = "trigger right bow 1 6 3 5\ntrigger left off\n",
+
+    -- Электрокопьё / Tech Spear
+    ["Weapon_Melee_TechSpear_C"] = "trigger right feedback 1 2\ntrigger left off\n",
+
+    -- Тяжёлое оружие ближнего боя / Heavy Melee Weapon
+    ["Weapon_Melee_Heavy_C"] = "trigger right feedback 1 3\ntrigger left off\n",
+
+    -- Взрывная кувалда / Explosive Sledgehammer
+    ["Weapon_Melee_ExplosiveSledgehammer_C"] = "trigger right bow 1 7 5 8\ntrigger left off\n",
+
+    -- Персональный телепорт / Personal Teleporter
+    ["Item_Teleporter_ParentBP_C"] = "trigger right weapon 2 5 6\ntrigger left off\n",
+
+    -- Мега-фонарь / Megalight
+    ["Item_LightSource_Megalight_C"] = "trigger right weapon 2 4 5\ntrigger left off\n",
+
+    -- Выстрел / Fire
+    ["FIRE"] = "trigger right vibration 0 7 32\n",
+
+    -- Атака / Attack
+    ["ATTACK"] = "trigger right vibration 0 3 30\n",
 }
 
 
