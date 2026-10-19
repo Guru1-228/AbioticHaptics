@@ -101,9 +101,6 @@ local function InitHooks()
     if isInitialized then return end
     isInitialized = true
 
-    --- lightbar init
-    SendCommand("lightbar on\nlightbar off\n")
-
     --- Синхронизация состояния контроллера
     local Character = FindFirstOf("Abiotic_PlayerCharacter_C")
     if Character and Character:IsValid() then
